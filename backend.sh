@@ -23,7 +23,7 @@ curl -o /tmp/backend.zip https://expense-artifacts.s3.amazonaws.com/backend.zip 
 echo $?
 echo -e "${colour} extract the application content \e[0m"
 cd /app &>>$log_file
-unzip /tmp/backend.zip
+unzip /tmp/backend.zip  &>>$log_file
 echo $?
 echo -e "${colour} installing the npm \e[0m" 
 npm install &>>$log_file
