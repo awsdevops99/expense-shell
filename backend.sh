@@ -46,7 +46,7 @@ echo -e "${colour} installing the client software \e[0m"
 dnf install mysql -y &>>$log_file
 status_check 
 echo -e "${color} Load Schema \e[0m"
-mysql -h mysql-dev.rdevopsb72.online -uroot -p${MYSQL_ROOT_PASSWORD} < /app/schema/backend.sql &>>$log_file
+mysql -h 172.31.46.50 -uroot -p${MYSQL_ROOT_PASSWORD} < /app/schema/backend.sql &>>$log_file
 status_check
 echo -e "${colour} starting the backend services \e[0m" 
 systemctl daemon-reload &>>$log_file
