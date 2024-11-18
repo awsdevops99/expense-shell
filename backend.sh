@@ -19,12 +19,18 @@ status_check
 echo -e "${colour} copy backend.service file \e[0m"
 cp backend.service /etc/systemd/system/backend.service &>>$log_file
 status_check 
-echo -e "${colour} add application user \e[0m"
-useradd expense &>>$log_file
+
+id expense &>>$log_file
+if [ $? -ne 0 ]; then
+   echo -e "${colour} add application user /e[0m"
+   useradd expense &>>$log_file    
 status_check
-echo -e "${colour} creating the application directory \e[0m"
-mkdir /app &>>$log_file
-status_check 
+fi
+if [ ! -d /app ]; then
+  echo -e "${color} Create Application Directory \e[0m"
+  mkdir /app &>>$log_file
+  status_check
+fi
 echo -e "${colour} download application content \e[0m"
 curl -o /tmp/backend.zip https://expense-artifacts.s3.amazonaws.com/backend.zip &>>$log_file 
 status_check
