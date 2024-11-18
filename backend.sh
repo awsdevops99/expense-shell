@@ -36,7 +36,7 @@ dnf install unzip -y &>>"$log_file"
 status_check
 echo -e "${colour} extract the application content \e[0m"
 cd /app &>>$log_file
-unzip /tmp/backend.zip  &>>$log_file
+unzip /tmp/backend.zip  
 status_check
 echo -e "${colour} installing the npm \e[0m" 
 npm install &>>$log_file
