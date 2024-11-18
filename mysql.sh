@@ -1,5 +1,6 @@
 log_file=/tmp/expense.log
 colour="\e[36m"
+MYSQL_ROOT_PASSWORD = $1
 status_check() {
 if [ $? -eq 0 ]; then
    echo -e "\e[36m success \e[0m"
@@ -21,5 +22,5 @@ systemctl enable mysqld &>>log_file
 systemctl start mysqld &>>log_file   
 status_check
 echo -e "${colour} set the password \e[0m"
-mysql_secure_installation --set-root-pass ExpenseApp@1 &>>log_file 
+mysql_secure_installation --set-root-pass ${MYSQL_ROOT_PASSWORD} &>>log_file 
 status_check
